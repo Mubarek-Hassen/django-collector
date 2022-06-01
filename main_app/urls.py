@@ -7,5 +7,6 @@ urlpatterns = [
     path('about/', views.About.as_view(), name="about"), # <- new route
     path('collections/', views.collections.as_view(), name = "collections"),
     path('collections/new/', views.AddChibi.as_view(), name="chibi_add"),
-    path('collections/<int:pk>/', views.ChibiDetail.as_view(), name = "chibi_detail")
+    path('collections/<int:pk>/', views.ChibiDetail.as_view(), name = "chibi_detail"),
+    path('collections/<int:pk>/update', views.ChibiUpdate.as_view(), name="chibi_update"),
 ]
