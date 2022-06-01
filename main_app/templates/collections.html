@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% comment %} for head title tags and helping us with SEO {% endcomment %}
+{% block title %}Chibi{% endblock  %}
+
+{% block content %}
+
+<h1 class="title pt-5">Trending Chibi</h1>
+<div class="gallery">
+  {% for onechibi in chibi %}
+  <a href="">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-square">
+          <img src="{{onechibi.image}}" alt="{{onechibi.name}}" />
+        </figure>
+      </div>
+      <div class="card-header">
+        <p class="card-header-title">{{onechibi.name}}</p>
+      </div>
+    </div>
+  </a>
+	{% empty %}
+  <article class="message">
+    <div class="message-header">
+      <p>No Chibi Available</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
