@@ -3,7 +3,11 @@ from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 #...
 from django.views.generic.base import TemplateView
+# This will import the class we are extending 
+from django.views.generic.edit import CreateView
+# after our other imports 
 from .models import onechibi
+from django.views.generic import DetailView
 # Create your views here.
 
 # Here we will be creating a class called Home and extending it from the View class
@@ -38,3 +42,13 @@ class collections(TemplateView):
             context['chibi'] = onechibi.objects.all()
             context["header"] = 'Trending Chibi'
         return context
+
+class AddChibi(CreateView):
+    model = onechibi
+    fields = ['name','img','bio','verified_chibi']
+    template_name = "chibi_add.html"
+    success_url = "/collections/"
+
+class ChibiDetail(DetailView):
+    model = onechibi
+    template_name = "chibi_detail.html"

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% comment %} for head title tags and helping us with SEO {% endcomment %}
-{% block title %}Chibi{% endblock  %}
+{% block title %}Collection{% endblock  %}
 
 {% block content %}
 
@@ -23,7 +23,7 @@
 
 <div class="gallery">
   {% for onechibi in chibi %}
-  <a href="">
+  <a href="{% url 'chibi_detail' onechibi.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">
