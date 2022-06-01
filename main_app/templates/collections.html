@@ -19,8 +19,11 @@
     </div>
     <!--  This anchor tag will redirect back to artist list without a query param -->
     <a class="button is-dark" href="{% url 'collections' %}">Clear Search</a>
+    <a class="button is-dark" href="{% url 'chibi_add' %}">Add Chibi</a>
   </form>
+  
 
+ 
 <div class="gallery">
   {% for onechibi in chibi %}
   <a href="{% url 'chibi_detail' onechibi.pk %}">
