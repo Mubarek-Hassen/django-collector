@@ -8,6 +8,8 @@ from django.views.generic.edit import CreateView, UpdateView
 # after our other imports 
 from .models import onechibi
 from django.views.generic import DetailView
+# at the top of the file import reverse 
+from django.urls import reverse
 # Create your views here.
 
 # Here we will be creating a class called Home and extending it from the View class
@@ -47,7 +49,8 @@ class AddChibi(CreateView):
     model = onechibi
     fields = ['name','img','bio','verified_chibi']
     template_name = "chibi_add.html"
-    success_url = "/collections/"
+    def get_success_url(self):
+        return reverse('chibi_detail', kwargs={'pk': self.object.pk})
 
 class ChibiDetail(DetailView):
     model = onechibi
@@ -57,4 +60,5 @@ class ChibiUpdate(UpdateView):
     model = onechibi
     fields = ['name', 'img', 'bio', 'verified_chibi']
     template_name = "chibi_update.html"
-    success_url = "/collections/"
+    def get_success_url(self):
+        return reverse('chibi_detail', kwargs={'pk': self.object.pk})
