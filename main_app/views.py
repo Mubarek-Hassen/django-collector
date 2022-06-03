@@ -4,7 +4,7 @@ from django.http import HttpResponse # <- a class to handle sending a type of re
 #...
 from django.views.generic.base import TemplateView
 # This will import the class we are extending 
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # after our other imports 
 from .models import onechibi
 from django.views.generic import DetailView
@@ -62,3 +62,8 @@ class ChibiUpdate(UpdateView):
     template_name = "chibi_update.html"
     def get_success_url(self):
         return reverse('chibi_detail', kwargs={'pk': self.object.pk})
+
+class ChibiDelete(DeleteView):
+    model = onechibi
+    template_name = "chibi_delete_confirm.html"
+    success_url = "/collections/"

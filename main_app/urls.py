@@ -9,4 +9,5 @@ urlpatterns = [
     path('collections/new/', views.AddChibi.as_view(), name="chibi_add"),
     path('collections/<int:pk>/', views.ChibiDetail.as_view(), name = "chibi_detail"),
     path('collections/<int:pk>/update', views.ChibiUpdate.as_view(), name="chibi_update"),
+    path('collections/<int:pk>/delete', views.ChibiDelete.as_view(), name = "chibi_delete")
 ]
